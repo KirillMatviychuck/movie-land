@@ -28,15 +28,11 @@
       height: 50px;
     }
   }
-
   .bottomHeader {
     background-color: #414040;
-    height: 45px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    .movieNamePath {
-      margin-left: 110px;
-      font-weight: bold;
-    }
+    padding: 0 100px;
   }
 }

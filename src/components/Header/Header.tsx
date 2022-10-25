@@ -4,6 +4,8 @@ import popcorn from '../../assets/images/header/popcorn.png';
 import tmbd from '../../assets/images/header/tmdb.png';
 
 import styles from './Header.module.scss';
+import Navigation from './Navigation/Navigation';
+import Search from './Search/Search';
 
 const Header = () => {
     return (
@@ -13,11 +15,12 @@ const Header = () => {
                     <img src={popcorn} alt='movieIcon'/>
                     <span className={styles.textSpan}>React Movie</span>
                 </div>
-                    <img className={styles.tmbdImage} src={tmbd} alt='movie data base'/>
+                <img className={styles.tmbdImage} src={tmbd} alt='movie data base'/>
             </div>
-            <div className={styles.bottomHeader}>
-                <span className={styles.movieNamePath}>Home / God Father</span>
-            </div>
+            <nav className={styles.bottomHeader}>
+                <Navigation/>
+                <Search/>
+            </nav>
         </div>
     );
 };
