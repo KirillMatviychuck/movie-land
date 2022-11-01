@@ -2,7 +2,7 @@ import {combineReducers} from 'redux';
 import {configureStore} from '@reduxjs/toolkit';
 import thunkMiddleware from 'redux-thunk';
 
-import {moviesReducer} from './slices/movie-list-slice';
+import {moviesReducer} from './slices/movie-list/movie-list';
 
 
 const rootReducer = combineReducers({

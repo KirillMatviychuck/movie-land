@@ -1,17 +1,16 @@
 import React, {useEffect} from 'react';
+import {Route, Routes} from 'react-router-dom';
 
 import './App.scss';
 import Header from './components/Header/Header';
-import Pagination from './components/Pagination/Pagination';
-import {getMovies} from './redux/slices/movie-list-slice';
-import {useAppDispatch, useAppSelector} from './redux/hooks';
-import MainPageSkeleton from './components/skeletons/MainPageSkeleton/MainPageSkeleton';
-import MovieCard from './components/MovieCard/MovieCard';
-
+import {getMovies} from './redux/slices/movie-list/movie-list';
+import {useAppDispatch} from './redux/hooks';
+import Home from './pages/Home/Home';
+import Movie from './pages/Movie/Movie';
+import NotFound from './pages/NotFound/NotFound';
 
 function App() {
     const dispatch = useAppDispatch();
-    const {results} = useAppSelector(state => state.movieList);
 
     useEffect(() => {
         dispatch(getMovies({page: 1}));
@@ -20,16 +19,11 @@ function App() {
     return (
         <div className='app'>
             <Header/>
-            <div className='content'>
-                <div className='container'>
-                    {results
-                        ? results.map(movie => {
-                            return <MovieCard key={movie.id} poster={movie.poster_path}/>;
-                        })
-                        : [...new Array(15)].map(fake => <MainPageSkeleton/>)}
-                </div>
-                <Pagination/>
-            </div>
+            <Routes>
+               <Route path='/' element={<Home/>}/>
+               <Route path='/movie/:movieID' element={<Movie />}/>
+               <Route path='*' element={<NotFound />}/>
+            </Routes>
         </div>
     );
 }

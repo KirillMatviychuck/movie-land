@@ -1,0 +1,47 @@
+.backdrop {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 84.4vh;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+
+  .movieBlock {
+    height: 70%;
+    width: 70%;
+    display: flex;
+
+    .poster {
+      width: 30%;
+    }
+
+    .aboutMovie {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 50px;
+      width: 980px;
+      color: bisque;
+      background-color: #000000;
+      opacity: 0.8;
+
+      .genres {
+        .genreItem {
+          display: inline-block;
+          min-width: 100px;
+        }
+      }
+
+      h2 {
+        color: bisque;
+        text-align: center;
+      }
+
+      h3 {
+        color: dodgerblue;
+      }
+    }
+  }
+}

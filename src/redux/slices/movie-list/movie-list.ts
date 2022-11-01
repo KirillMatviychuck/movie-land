@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 
-import {GetMoviesResponse} from '../../api/api-types';
-import {moviesAPI} from '../../api/api';
+import {GetMoviesResponse} from '../../../api/api-types';
+import {moviesAPI} from '../../../api/api';
 
 export const getMovies = createAsyncThunk('moviesList/getMovies',
     async (arg: { page: number }, {rejectWithValue}) => {

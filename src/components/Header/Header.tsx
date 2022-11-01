@@ -13,7 +13,7 @@ const Header = () => {
             <div className={styles.topHeader}>
                 <div className={styles.movieIcon}>
                     <img src={popcorn} alt='movieIcon'/>
-                    <span className={styles.textSpan}>React Movie</span>
+                    <span className={styles.textSpan}>Movie Land</span>
                 </div>
                 <img className={styles.tmbdImage} src={tmbd} alt='movie data base'/>
             </div>
