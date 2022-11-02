@@ -1,5 +1,4 @@
 .backdrop {
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,36 +10,102 @@
   .movieBlock {
     height: 70%;
     width: 70%;
-    display: flex;
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    grid-template-rows: 1fr 60px;
+    grid-template-areas: 'poster description'
+                         'poster footer';
 
     .poster {
-      width: 30%;
+      height: 100%;
+      width: 100%;
+      grid-area: poster;
     }
 
-    .aboutMovie {
+    .description {
       display: flex;
-      flex-direction: column;
       justify-content: space-between;
+      grid-area: description;
       padding: 50px;
-      width: 980px;
-      color: bisque;
       background-color: #000000;
       opacity: 0.8;
 
-      .genres {
-        .genreItem {
-          display: inline-block;
-          min-width: 100px;
+      .aboutMovie {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: bisque;
+
+        .aboutMovieHeader {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .movieTitle {
+            color: chocolate;
+          }
+
+          .movieRating {
+            padding: 10px;
+            border: 2px solid green;
+            border-radius: 30px;
+          }
+        }
+
+        .tagline {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+
+          &::after {
+            content: '';
+            position: absolute;
+            background-color: chocolate;
+            width: 55px;
+            height: 1px;
+            left: 50%;
+            top: 35px;
+            transform: translate(-50%, 50%);
+          }
+        }
+
+        .genresBlock {
+          display: flex;
+
+          .genres {
+            color: chocolate;
+          }
+
+          .genreItem {
+            display: inline-block;
+            min-width: 100px;
+            text-align: center;
+          }
         }
       }
+    }
 
-      h2 {
-        color: bisque;
-        text-align: center;
+    .footer {
+      grid-area: footer;
+      padding: 0 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: bisque;
+      background-color: black;
+      .footerSpan {
+        display: inline-block;
+        padding-left: 15px;
       }
-
-      h3 {
-        color: dodgerblue;
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      img {
+        height: 30px;
+        width: 30px;
       }
     }
   }

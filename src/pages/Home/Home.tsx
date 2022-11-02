@@ -16,7 +16,7 @@ const Home = () => {
             <div className={styles.container}>
                 {results
                     ? results.map(movie => {
-                        return <MovieCard key={movie.id} poster={movie.poster_path}/>;
+                        return <MovieCard key={movie.id} poster={movie.poster_path} movieID={movie.id}/>;
                     })
                     : [...new Array(15)].map((_,index) => <MainPageSkeleton key={index}/>)}
             </div>

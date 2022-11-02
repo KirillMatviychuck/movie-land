@@ -3,10 +3,12 @@ import {configureStore} from '@reduxjs/toolkit';
 import thunkMiddleware from 'redux-thunk';
 
 import {moviesReducer} from './slices/movie-list/movie-list';
+import {movieDetailsReducer} from './slices/movie-details/movie-details';
 
 
 const rootReducer = combineReducers({
-    movieList: moviesReducer
+    movieList: moviesReducer,
+    movieDetails: movieDetailsReducer
 });
 
 export const store = configureStore({
@@ -16,3 +18,6 @@ export const store = configureStore({
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
+
+// @ts-ignore
+window.store = store;
