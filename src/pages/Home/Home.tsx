@@ -10,7 +10,6 @@ import styles from './Home.module.scss';
 
 const Home = () => {
     const {results} = useAppSelector(state => state.movieList);
-    
     return (
         <div className={styles.content}>
             <div className={styles.container}>

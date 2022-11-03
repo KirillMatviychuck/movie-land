@@ -1,4 +1,4 @@
-type PopularMovieType = {
+type MovieType = {
     adult: boolean
     backdrop_path: string
     genre_ids: [number, number],
@@ -15,9 +15,9 @@ type PopularMovieType = {
     vote_count: number
 }
 
-export type GetPopularMoviesResponse = {
+export type GetMoviesResponse = {
     page: number
-    results: PopularMovieType[]
+    results: MovieType[]
     total_pages: number
     total_results: number
 }
