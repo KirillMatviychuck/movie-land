@@ -6,7 +6,7 @@ import {getMovieDetails} from '../../redux/slices/movie-details/movie-details';
 
 import styles from './MovieCard.module.scss';
 
-const getPosterURL = (posterPath: string) => {
+export const getPosterURL = (posterPath: string) => {
     return `https://www.themoviedb.org/t/p/w220_and_h330_face${posterPath}`;
 };
 
