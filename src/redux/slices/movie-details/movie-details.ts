@@ -2,11 +2,14 @@ import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 
 import {GetDetailsResponse} from '../../../api/api-types';
 import {moviesAPI} from '../../../api/api';
+import {setAppProgressStatus} from '../app/app';
 
 export const getMovieDetails = createAsyncThunk('movieDetails/getMovieDetails',
-    async (arg: { movieID: number }, {rejectWithValue}) => {
+    async (arg: { movieID: number }, {dispatch, rejectWithValue}) => {
+        dispatch(setAppProgressStatus({status: 'loading'}));
         try {
             const res = await moviesAPI.getDetails(arg.movieID);
+            dispatch(setAppProgressStatus({status: 'succeeded'}));
             return {...res.data};
         } catch (e) {
             return rejectWithValue({error: 'something went wrong'});

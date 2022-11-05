@@ -4,9 +4,11 @@ import thunkMiddleware from 'redux-thunk';
 
 import {moviesReducer} from './slices/movie-list/movie-list';
 import {movieDetailsReducer} from './slices/movie-details/movie-details';
+import {appReducer} from './slices/app/app';
 
 
 const rootReducer = combineReducers({
+    app: appReducer,
     movieList: moviesReducer,
     movieDetails: movieDetailsReducer
 });

@@ -4,14 +4,14 @@ import {GetMoviesResponse} from '../../../api/api-types';
 import {moviesAPI} from '../../../api/api';
 
 export enum CATEGORIES {
-    POPULAR = 0 ,
-    TOP_RATED = 1 ,
+    POPULAR = 0,
+    TOP_RATED = 1,
     NOW_PLAYING = 2,
     UPCOMING = 3
 }
 
 export const getMovies = createAsyncThunk('moviesList/getMovies',
-    async (arg: {category: number}, {rejectWithValue}) => {
+    async (arg: { category: number }, {rejectWithValue}) => {
         try {
             if (arg.category === CATEGORIES.POPULAR) {
                 const res = await moviesAPI.getPopularMovies();
@@ -24,8 +24,7 @@ export const getMovies = createAsyncThunk('moviesList/getMovies',
             if (arg.category === CATEGORIES.NOW_PLAYING) {
                 const res = await moviesAPI.getNowPlayingMovies();
                 return {...res.data};
-            }
-            else {
+            } else {
                 const res = await moviesAPI.getUpcomingMovies();
                 return {...res.data};
             }
