@@ -46,6 +46,11 @@
           }
 
           .movieRating {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 25px;
+            width: 25px;
             padding: 10px;
             border: 2px solid green;
             border-radius: 30px;

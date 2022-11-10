@@ -48,7 +48,7 @@ const MovieDetails = () => {
                             <h2 className={styles.movieTitle}>{title}</h2>
                             <span className={styles.movieRating}>{correctMovieRate(vote_average)}</span>
                         </div>
-                        <div className={styles.tagline}>{tagline}</div>
+                        {tagline && <div className={styles.tagline}>{tagline}</div>}
                         <p className={styles.plot}>{overview}</p>
                         <div className={styles.genresBlock}>
                             <h4 className={styles.genres}>GENRES :</h4>

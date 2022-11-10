@@ -1,4 +1,8 @@
-type MovieType = {
+export type GetMoviesData = {
+    page?: number
+}
+
+export type MovieType = {
     adult: boolean
     backdrop_path: string
     genre_ids: [number, number],
