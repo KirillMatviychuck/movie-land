@@ -2,7 +2,7 @@ import React from 'react';
 import {useNavigate} from 'react-router-dom';
 
 import {useAppDispatch} from '../../redux/hooks';
-import {getMovieDetails} from '../../redux/slices/movie-details/movie-details';
+import {getMovieDetails} from '../../redux/slices/movie-details';
 
 import styles from './MovieCard.module.scss';
 

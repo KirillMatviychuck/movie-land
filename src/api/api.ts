@@ -24,3 +24,9 @@ export const moviesAPI = {
         return instance.get<GetDetailsResponse>(`movie/${movieID}`, {params: {api_key: key}});
     }
 };
+
+export const searchAPI = {
+    searchMovies(title: string, page?: number) {
+        return instance.get<GetMoviesResponse>('search/movie', {params: {api_key: key, query: title, page}});
+    }
+};

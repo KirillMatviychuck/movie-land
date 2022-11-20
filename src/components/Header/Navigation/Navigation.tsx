@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 
 import {useAppDispatch} from '../../../redux/hooks';
-import {CATEGORIES, getMovies} from '../../../redux/slices/movie-list/movie-list';
+import {CATEGORIES, getMovies} from '../../../redux/slices/movie-list';
 
 import styles from './Navigation.module.scss';
 
@@ -19,6 +19,7 @@ const Navigation = () => {
         if (index === 1) dispatch(getMovies({category: CATEGORIES.TOP_RATED}));
         if (index === 2) dispatch(getMovies({category: CATEGORIES.NOW_PLAYING}));
         if (index === 3) dispatch(getMovies({category: CATEGORIES.UPCOMING}));
+
         navigate('/');
     };
     

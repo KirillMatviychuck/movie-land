@@ -3,7 +3,7 @@ import {Route, Routes} from 'react-router-dom';
 
 import './App.scss';
 import Header from './components/Header/Header';
-import {CATEGORIES, getMovies} from './redux/slices/movie-list/movie-list';
+import {CATEGORIES, getMovies} from './redux/slices/movie-list';
 import {useAppDispatch} from './redux/hooks';
 import Home from './pages/Home/Home';
 import Movie from './pages/Movie/Movie';

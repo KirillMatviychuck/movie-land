@@ -11,6 +11,7 @@ import Search from './Search/Search';
 const Header = () => {
     const navigate = useNavigate();
     const onClickHandler = () => navigate('/');
+
     return (
         <div className={styles.header}>
             <div className={styles.topHeader}>
@@ -18,7 +19,7 @@ const Header = () => {
                     <img src={popcorn} alt='movieIcon'/>
                     <span className={styles.textSpan}>Movie Land</span>
                 </div>
-                <img className={styles.tmbdImage} src={tmbd} alt='movie data base'/>
+                <a href='https://www.themoviedb.org/'> <img className={styles.tmbdImage} src={tmbd} alt='movie data base'/></a>
             </div>
             <nav className={styles.bottomHeader}>
                 <Navigation/>

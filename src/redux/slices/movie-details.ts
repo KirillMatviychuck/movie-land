@@ -1,8 +1,9 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 
-import {GetDetailsResponse} from '../../../api/api-types';
-import {moviesAPI} from '../../../api/api';
-import {setAppProgressStatus} from '../app/app';
+import {GetDetailsResponse} from '../../api/api-types';
+import {moviesAPI} from '../../api/api';
+
+import {setAppProgressStatus} from './app';
 
 export const getMovieDetails = createAsyncThunk('movieDetails/getMovieDetails',
     async (arg: { movieID: number }, {dispatch, rejectWithValue}) => {
