@@ -13,8 +13,8 @@ const Paginator: React.FC<PaginationProps> = ({page = 1, totalPages, current_top
         else dispatch(getMovies({category: current_topic, page: value}));
     };
     return (
-        <div className={styles.pagination}>
-            <Pagination color='primary' count={totalPages} page={page} onChange={handleChange}/>
+        <div className={styles.paginationBlock}>
+            <Pagination color='standard' count={totalPages} page={page} onChange={handleChange}/>
         </div>
     );
 };

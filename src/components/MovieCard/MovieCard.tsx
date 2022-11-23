@@ -3,6 +3,7 @@ import {useNavigate} from 'react-router-dom';
 
 import {useAppDispatch} from '../../redux/hooks';
 import {getMovieDetails} from '../../redux/slices/movie-details';
+import defaultPoster from '../../assets/images/main-page/no-poster-found.jpg'
 
 import styles from './MovieCard.module.scss';
 
@@ -20,7 +21,10 @@ const MovieCard: React.FC<PropsType> = ({poster, movieID}) => {
 
     return (
         <div className={styles.movieCard} onClick={onClickHandler}>
-            <img src={getPosterURL(poster)} alt='movie poster'/>
+            {poster
+                ? <img src={getPosterURL(poster)} alt='movie poster'/>
+                : <img src={defaultPoster} alt='default poster'/>
+            }
         </div>
     );
 };

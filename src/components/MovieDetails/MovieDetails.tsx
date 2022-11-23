@@ -6,6 +6,7 @@ import reverse from '../../assets/images/main-page/movie/reverse.png';
 import dollar from '../../assets/images/main-page/movie/dollar.png';
 import {useAppSelector} from '../../redux/hooks';
 import SingleMovieSkeleton from '../skeletons/SingleMovie/SingleMovieSkeleton';
+import defaultPoster from '../../assets/images/main-page/no-poster-found.jpg';
 
 import styles from './MovieDetails.module.scss';
 
@@ -41,7 +42,10 @@ const MovieDetails = () => {
         <div className={styles.backdrop}
              style={{backgroundImage: `url(${getBackdropURL(backdrop_path)})`}}>
             <div className={styles.movieBlock}>
-                <img className={styles.poster} src={getPosterURL(poster_path)} alt='movie poster'/>
+                {poster_path
+                    ? <img className={styles.poster} src={getPosterURL(poster_path)} alt='movie poster'/>
+                    : <img className={styles.poster} src={defaultPoster} alt='default poster'/>
+                }
                 <div className={styles.description}>
                     <div className={styles.aboutMovie}>
                         <div className={styles.aboutMovieHeader}>
