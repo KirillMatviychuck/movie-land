@@ -12,7 +12,6 @@ import styles from './Home.module.scss';
 const Home = () => {
     const {results, total_pages,page, current_topic, searchField} = useAppSelector(state => state.movieList);
     const {status} = useAppSelector(state => state.app);
-
     if (status === 'loading') {
         return (
             <div className={styles.content}>
