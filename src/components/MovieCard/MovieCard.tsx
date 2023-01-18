@@ -3,7 +3,8 @@ import {useNavigate} from 'react-router-dom';
 
 import {useAppDispatch} from '../../redux/hooks';
 import {getMovieDetails} from '../../redux/slices/movie-details';
-import defaultPoster from '../../assets/images/main-page/no-poster-found.jpg'
+import defaultPoster from '../../assets/images/main-page/no-poster-found.jpg';
+import {getMovieCast} from '../../redux/slices/movie-cast';
 
 import styles from './MovieCard.module.scss';
 
@@ -16,6 +17,7 @@ const MovieCard: React.FC<PropsType> = ({poster, movieID}) => {
     const dispatch = useAppDispatch();
     const onClickHandler = () => {
         dispatch(getMovieDetails({movieID}));
+        dispatch(getMovieCast({movieID}));
         navigate(`/movie/${movieID}`);
     };
 

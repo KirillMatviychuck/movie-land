@@ -5,12 +5,14 @@ import thunkMiddleware from 'redux-thunk';
 import {moviesReducer} from './slices/movie-list';
 import {movieDetailsReducer} from './slices/movie-details';
 import {appReducer} from './slices/app';
+import {movieCastReducer} from './slices/movie-cast';
 
 
 const rootReducer = combineReducers({
     app: appReducer,
     movieList: moviesReducer,
-    movieDetails: movieDetailsReducer
+    movieDetails: movieDetailsReducer,
+    movieCast: movieCastReducer
 });
 
 export const store = configureStore({

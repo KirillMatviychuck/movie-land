@@ -1,10 +1,14 @@
 import React from 'react';
 
 import MovieDetails from '../../components/MovieDetails/MovieDetails';
+import MovieCast from '../../components/MovieCast/MovieCast';
 
 const Movie = () => {
     return (
-        <MovieDetails />
+        <div>
+            <MovieDetails/>
+            <MovieCast/>
+        </div>
     );
 };
 
