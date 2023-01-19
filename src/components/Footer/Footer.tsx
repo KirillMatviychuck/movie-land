@@ -15,7 +15,7 @@ const Footer = () => {
                 <img src={facebook} alt='github' className={styles.images}/>
             </div>
             <div className={styles.copyright}>
-                © 2022 Movie Land
+                © 2023 Movie Land
             </div>
         </div>
     );

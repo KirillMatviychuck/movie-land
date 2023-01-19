@@ -1,9 +1,9 @@
 .actors {
-  height: 500px;
+  min-height: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 
   .actorsHeader {
     display: flex;
@@ -13,16 +13,24 @@
 
     .title {
       margin-left: 35px;
+      background: #020419;
+      background: linear-gradient(to top, #020419 0%, #AAB396 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
     }
 
-    .showAllBtn {
+    .switch {
       margin-right: 35px;
     }
   }
 
   .actorsCards {
+    margin: 15px 0;
+    gap: 20px;
     width: 80%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
   }
