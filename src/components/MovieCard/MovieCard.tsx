@@ -43,21 +43,22 @@ const MovieCard: React.FC<PropsType> = ({poster, movieID, movie_title, release_d
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
         >
-            {poster
-                ? <div className={styles.flipCardInner}>
-                    <div className={styles.flipCardFront}>
-                        <img src={getPosterURL(poster)} alt='movie poster'/>
-                    </div>
-                    <div className={styles.flipCardBack}>
-                        <CardBackside
-                            movie_title={movie_title}
-                            release_date={release_date}
-                            rating={rating}
-                        />
-                    </div>
+            <div className={styles.flipCardInner}>
+                <div className={styles.flipCardFront}>{
+                    poster
+                        ? <img src={getPosterURL(poster)} alt='movie poster'/>
+                        : <img src={defaultPoster} alt='default poster'/>
+                }
                 </div>
-                : <img src={defaultPoster} alt='default poster'/>
-            }
+                <div className={styles.flipCardBack}>
+                    <CardBackside
+                        movie_title={movie_title}
+                        release_date={release_date}
+                        rating={rating}
+                    />
+                </div>
+            </div>
+
         </Link>
     );
 };
