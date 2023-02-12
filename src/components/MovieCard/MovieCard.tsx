@@ -15,8 +15,20 @@ export const getPosterURL = (posterPath: string) => {
 
 const MovieCard: React.FC<PropsType> = ({poster, movieID, movie_title, release_date, rating}) => {
     const [isHovering, setIsHovering] = useState(false);
-    const handleMouseOver = () => setIsHovering(true);
-    const handleMouseOut = () => setIsHovering(false);
+    const [delayHandler, setDelayHandler] = useState<any>(null);
+
+    const handleMouseEnter = () => {
+        setDelayHandler(setTimeout(() => {
+            setIsHovering(true);
+        }, 150));
+    };
+
+    const handleMouseLeave = () => {
+        clearTimeout(delayHandler);
+        if (isHovering) {
+            setIsHovering(false);
+        }
+    };
 
     const dispatch = useAppDispatch();
     const onClickHandler = () => {
@@ -28,20 +40,23 @@ const MovieCard: React.FC<PropsType> = ({poster, movieID, movie_title, release_d
         <Link to={`/movie/${movieID}`}
               className={styles.movieCard}
               onClick={onClickHandler}
-              onMouseOver={handleMouseOver}
-              onMouseOut={handleMouseOut}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
         >
-            {
-                !isHovering && poster
-                    ? <img src={getPosterURL(poster)} alt='movie poster'/>
-                    : isHovering
-                        ? <CardBackside
+            {poster
+                ? <div className={styles.flipCardInner}>
+                    <div className={styles.flipCardFront}>
+                        <img src={getPosterURL(poster)} alt='movie poster'/>
+                    </div>
+                    <div className={styles.flipCardBack}>
+                        <CardBackside
                             movie_title={movie_title}
                             release_date={release_date}
                             rating={rating}
                         />
-                        : <img src={defaultPoster} alt='default poster'/>
-
+                    </div>
+                </div>
+                : <img src={defaultPoster} alt='default poster'/>
             }
         </Link>
     );
