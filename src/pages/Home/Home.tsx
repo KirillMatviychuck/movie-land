@@ -10,7 +10,7 @@ import styles from './Home.module.scss';
 
 
 const Home = () => {
-    const {results, total_pages,page, current_topic, searchField} = useAppSelector(state => state.movieList);
+    const {results, page, current_topic, searchField} = useAppSelector(state => state.movieList);
     const {status} = useAppSelector(state => state.app);
     if (status === 'loading') {
         return (
@@ -27,12 +27,18 @@ const Home = () => {
             <div className={styles.container}>
                 {results
                     ? results.map(movie => {
-                        return <MovieCard key={movie.id} poster={movie.poster_path} movieID={movie.id}/>;
+                        return <MovieCard key={movie.id}
+                                          poster={movie.poster_path}
+                                          movieID={movie.id}
+                                          movie_title={movie.title}
+                                          rating={movie.vote_average}
+                                          release_date={movie.release_date}
+                        />;
                     })
                     : [...new Array(15)].map((_, index) => <MainPageSkeleton key={index}/>)}
             </div>
-            <Paginator totalPages={total_pages} page={page} current_topic={current_topic} searchField={searchField}/>
-            <Footer />
+            <Paginator page={page} current_topic={current_topic} searchField={searchField}/>
+            <Footer/>
         </div>
     );
 };
