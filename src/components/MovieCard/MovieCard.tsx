@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 import {useAppDispatch} from '../../redux/hooks';
 import {getMovieDetails} from '../../redux/slices/movie-details';
@@ -18,19 +18,18 @@ const MovieCard: React.FC<PropsType> = ({poster, movieID, movie_title, release_d
     const handleMouseOver = () => setIsHovering(true);
     const handleMouseOut = () => setIsHovering(false);
 
-    const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const onClickHandler = () => {
         dispatch(getMovieDetails({movieID}));
         dispatch(getMovieCast({movieID}));
-        navigate(`/movie/${movieID}`);
     };
 
     return (
-        <div className={styles.movieCard}
-             onClick={onClickHandler}
-             onMouseOver={handleMouseOver}
-             onMouseOut={handleMouseOut}
+        <Link to={`/movie/${movieID}`}
+              className={styles.movieCard}
+              onClick={onClickHandler}
+              onMouseOver={handleMouseOver}
+              onMouseOut={handleMouseOut}
         >
             {
                 !isHovering && poster
@@ -44,7 +43,7 @@ const MovieCard: React.FC<PropsType> = ({poster, movieID, movie_title, release_d
                         : <img src={defaultPoster} alt='default poster'/>
 
             }
-        </div>
+        </Link>
     );
 };
 

@@ -12,6 +12,7 @@
   box-shadow: 1px 1px 42px 4px rgba(140, 140, 140, 0.41);
 
   .title {
+    padding: 0 20px;
     font-weight: bold;
     font-size: 1.2em;
     text-align: center;
@@ -53,10 +54,12 @@
     flex-direction: column;
     align-self: flex-start;
     margin-left: 40px;
+
     .genreTitle {
       font-size: 0.8em;
       color: #757575;
     }
+
     .genre {
       font-size: 0.9em;
     }

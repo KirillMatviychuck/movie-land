@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import github from '../../assets/images/footer/github.png';
 import instagram from '../../assets/images/footer/instagram.png';
@@ -14,9 +15,9 @@ const Footer = () => {
                 <img src={instagram} alt='github' className={styles.images}/>
                 <img src={facebook} alt='github' className={styles.images}/>
             </div>
-            <div className={styles.copyright}>
+            <Link to={'/movie'} className={styles.copyright}>
                 © 2023 Movie Land
-            </div>
+            </Link>
         </div>
     );
 };

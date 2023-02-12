@@ -13,7 +13,7 @@ const Header = () => {
     const onClickHandler = () => navigate('/');
 
     return (
-        <div className={styles.header}>
+        <div className={styles.header} id='anchor'>
             <div className={styles.topHeader}>
                 <div className={styles.movieIcon} onClick={onClickHandler}>
                     <img src={popcorn} alt='movieIcon'/>
