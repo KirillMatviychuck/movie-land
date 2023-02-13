@@ -1,4 +1,5 @@
 import React from 'react';
+import {motion} from 'framer-motion';
 
 import {useAppSelector} from '../../redux/hooks';
 import MovieCard from '../../components/MovieCard/MovieCard';
@@ -23,7 +24,11 @@ const Home = () => {
     }
 
     return (
-        <div className={styles.content}>
+        <motion.div className={styles.content}
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1, transition: {duration: 0.5}}}
+                    exit={{opacity: 0}}
+        >
             <div className={styles.container}>
                 {results
                     ? results.map(movie => {
@@ -39,7 +44,7 @@ const Home = () => {
             </div>
             <Paginator page={page} current_topic={current_topic} searchField={searchField}/>
             <Footer/>
-        </div>
+        </motion.div>
     );
 };
 

@@ -1,28 +1,21 @@
 import React, {useEffect} from 'react';
-import {Route, Routes} from 'react-router-dom';
 
 import './App.scss';
 import Header from './components/Header/Header';
 import {CATEGORIES, getMovies} from './redux/slices/movie-list';
 import {useAppDispatch} from './redux/hooks';
-import Home from './pages/Home/Home';
-import Movie from './pages/Movie/Movie';
-import NotFound from './pages/NotFound/NotFound';
+import AnimatedRoutes from './components/AnimatedRoutes/AnimatedRoutes';
 
 function App() {
     const dispatch = useAppDispatch();
     useEffect(() => {
         dispatch(getMovies({category: CATEGORIES.POPULAR}));
-    }, []);
+    }, [dispatch]);
 
     return (
         <div className='app'>
             <Header/>
-            <Routes>
-                <Route path='/' element={<Home/>}/>
-                <Route path='/movie/:movieID' element={<Movie/>}/>
-                <Route path='*' element={<NotFound/>}/>
-            </Routes>
+            <AnimatedRoutes />
         </div>
     );
 }
