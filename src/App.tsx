@@ -15,7 +15,7 @@ function App() {
     return (
         <div className='app'>
             <Header/>
-            <AnimatedRoutes />
+            <AnimatedRoutes/>
         </div>
     );
 }

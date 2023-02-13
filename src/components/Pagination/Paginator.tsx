@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Pagination} from '@material-ui/lab';
 
 import {useAppDispatch} from '../../redux/hooks';
@@ -7,6 +7,10 @@ import {getMovies, searchMovies} from '../../redux/slices/movie-list';
 import styles from './Pagination.module.scss';
 
 const Paginator: React.FC<PaginationProps> = ({page = 1, current_topic, searchField}) => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const dispatch = useAppDispatch();
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         if (searchField) dispatch(searchMovies({title: searchField, page: value}));

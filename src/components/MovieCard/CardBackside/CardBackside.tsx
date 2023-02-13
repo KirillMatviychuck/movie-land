@@ -18,11 +18,23 @@ const CardBackside: FC<Props> = ({movie_title, release_date, rating}) => {
     return (
         <div className={styles.backside}>
             <div className={styles.title}>{movie_title}</div>
-            <div className={styles.ratingBlock}>
-                <div className={styles.rating}>{correctMovieRate(rating)}</div>
-                <div className={styles.toFavorite}>{<FavoriteBorderOutlined />}</div>
+            <div className={styles.favoriteRatingBlock}>
+                <div className={styles.ratingBlock}>
+                    <div className={styles.ratingTitle}>Rating:</div>
+                    <div className={styles.rating}>{correctMovieRate(rating)}</div>
+                </div>
+                <div className={styles.favoriteBlock}>
+                    <div className={styles.favoriteTitle}>To watchlist:</div>
+                    <div className={styles.toFavorite}>{<FavoriteBorderOutlined/>}</div>
+                </div>
             </div>
-            <div className={styles.releaseDate}>{correctDate(release_date)}</div>
+            <div className={styles.releaseBlock}>
+            <div className={styles.releaseDateTitle}>Release date:</div>
+                <div className={styles.releaseDate}>{correctDate(release_date)}</div>
+            </div>
+            <div className={styles.footer}>
+                <span className={styles.footerTitle}>OVERVIEW</span>
+            </div>
         </div>
     );
 };
