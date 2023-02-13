@@ -7,6 +7,7 @@ import dollar from '../../assets/images/main-page/movie/dollar.png';
 import {useAppSelector} from '../../redux/hooks';
 import SingleMovieSkeleton from '../skeletons/SingleMovie/SingleMovieSkeleton';
 import defaultPoster from '../../assets/images/main-page/no-poster-found.jpg';
+import {fixColor, fixDate, fixDuration, fixMovieRate} from '../../utils/utils';
 
 import styles from './MovieDetails.module.scss';
 
@@ -21,20 +22,11 @@ const MovieDetails = () => {
         revenue, runtime, tagline, overview
     } = useAppSelector(state => state.movieDetails);
     const {status} = useAppSelector(state => state.app);
-    const correctMovieRate = (rate: number) => rate ? rate.toFixed(1) : 0;
-    const correctDuration = (runtime: number) => {
-        const hours = Math.floor(runtime / 60);
-        const minutes = runtime - (hours * 60);
-        return `${hours}h ${minutes}m`;
-    };
-    const correctDate = (date: string) => {
-        if (date) {
-            const year = date.slice(0, 4);
-            const month = date.slice(5, 7);
-            const day = date.slice(8);
-            return `${day}-${month}-${year}`;
-        } else return '10-10-2022';
-    };
+
+    const movieRating = fixMovieRate(vote_average);
+    const ratingColor = fixColor(movieRating);
+    const correctDate = fixDate(release_date);
+    const correctDuration = fixDuration(runtime);
 
     if (status === 'loading') return <SingleMovieSkeleton/>;
 
@@ -50,7 +42,7 @@ const MovieDetails = () => {
                     <div className={styles.aboutMovie}>
                         <div className={styles.aboutMovieHeader}>
                             <h2 className={styles.movieTitle}>{title}</h2>
-                            <span className={styles.movieRating}>{correctMovieRate(vote_average)}</span>
+                            <span className={styles.movieRating} style={{border: `1px solid ${ratingColor}`}}>{movieRating}</span>
                         </div>
                         {tagline && <div className={styles.tagline}>{tagline}</div>}
                         <p className={styles.plot}>{overview}</p>
@@ -66,11 +58,11 @@ const MovieDetails = () => {
                 <div className={styles.footer}>
                     <div>
                         <img src={clock} alt='clock'/>
-                        <span className={styles.footerSpan}>Release date: {correctDate(release_date)}</span>
+                        <span className={styles.footerSpan}>Release date: {correctDate}</span>
                     </div>
                     <div>
                         <img src={reverse} alt='reverse'/>
-                        <span className={styles.footerSpan}>Duration: {correctDuration(runtime)}</span>
+                        <span className={styles.footerSpan}>Duration: {correctDuration}</span>
                     </div>
                     <div>
                         <img src={dollar} alt='dollar'/>
