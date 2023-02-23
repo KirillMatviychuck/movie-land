@@ -20,12 +20,12 @@ const CardBackside: FC<Props> = ({movie_title, release_date, rating}) => {
                     <div className={styles.rating} style={{border: `1px solid ${ratingColor}`}}>{movieRating}</div>
                 </div>
                 <div className={styles.favoriteBlock}>
-                    <div className={styles.favoriteTitle}>Add to watchlist:</div>
+                    <div className={styles.favoriteTitle}>To watchlist:</div>
                     <div className={styles.toFavorite}>{<FavoriteBorderOutlined color='secondary'/>}</div>
                 </div>
             </div>
             <div className={styles.releaseBlock}>
-            <div className={styles.releaseDateTitle}>Release date:</div>
+                <div className={styles.releaseDateTitle}>Release date:</div>
                 <div className={styles.releaseDate}>{correctDate}</div>
             </div>
             <div className={styles.footer}>

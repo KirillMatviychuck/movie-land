@@ -18,16 +18,13 @@ const MovieCard: React.FC<PropsType> = ({poster, movieID, movie_title, release_d
     const [delayHandler, setDelayHandler] = useState<any>(null);
 
     const handleMouseEnter = () => {
-        setDelayHandler(setTimeout(() => {
-            setIsHovering(true);
-        }, 150));
+        setDelayHandler(setTimeout(() => setIsHovering(true), 150));
     };
 
     const handleMouseLeave = () => {
         clearTimeout(delayHandler);
-        if (isHovering) {
-            setIsHovering(false);
-        }
+        if (isHovering) setIsHovering(false);
+
     };
 
     const dispatch = useAppDispatch();
