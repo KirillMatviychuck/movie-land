@@ -12,7 +12,7 @@ import styles from './Home.module.scss';
 
 const Home = () => {
 
-    const {results, page, current_topic, searchField} = useAppSelector(state => state.movieList);
+    const {results, page, current_topic, searchField, total_pages} = useAppSelector(state => state.movieList);
     const {status} = useAppSelector(state => state.app);
     if (status === 'loading') {
         return (
@@ -43,7 +43,7 @@ const Home = () => {
                     })
                     : [...new Array(15)].map((_, index) => <MainPageSkeleton key={index}/>)}
             </div>
-            <Paginator page={page} current_topic={current_topic} searchField={searchField}/>
+            <Paginator page={page} total_pages={total_pages} current_topic={current_topic} searchField={searchField}/>
             <Footer/>
         </motion.div>
     );

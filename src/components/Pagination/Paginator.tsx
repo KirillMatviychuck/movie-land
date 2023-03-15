@@ -6,11 +6,11 @@ import {getMovies, searchMovies} from '../../redux/slices/movie-list';
 
 import styles from './Pagination.module.scss';
 
-const Paginator: React.FC<PaginationProps> = ({page = 1, current_topic, searchField}) => {
+const Paginator: React.FC<PaginationProps> = ({page = 1, current_topic, searchField, total_pages}) => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-
+    const correctTotalPages = total_pages > 500 ? 500 : total_pages;
     const dispatch = useAppDispatch();
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         if (searchField) dispatch(searchMovies({title: searchField, page: value}));
@@ -18,13 +18,14 @@ const Paginator: React.FC<PaginationProps> = ({page = 1, current_topic, searchFi
     };
     return (
         <div className={styles.paginationBlock}>
-            <Pagination color='standard' count={200} page={page} onChange={handleChange}/>
+            <Pagination color='standard' count={correctTotalPages} page={page} onChange={handleChange}/>
         </div>
     );
 };
 
 type PaginationProps = {
     page: number
+    total_pages: number
     current_topic: number
     searchField: string
 }
