@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/movie-land/static/css/main.3064e9e3.css",
-    "main.js": "/movie-land/static/js/main.3d5e3c6e.js",
+    "main.js": "/movie-land/static/js/main.a8c38bfe.js",
     "static/media/popcorn.png": "/movie-land/static/media/popcorn.232e37f920be00f2073f.png",
     "static/media/female.jpg": "/movie-land/static/media/female.2de26307288702ebfa63.jpg",
     "static/media/male.jpg": "/movie-land/static/media/male.509b4ea8530003a34282.jpg",
@@ -9,10 +9,10 @@
     "static/media/github.png": "/movie-land/static/media/github.6fdc80f1a5d385046460.png",
     "index.html": "/movie-land/index.html",
     "main.3064e9e3.css.map": "/movie-land/static/css/main.3064e9e3.css.map",
-    "main.3d5e3c6e.js.map": "/movie-land/static/js/main.3d5e3c6e.js.map"
+    "main.a8c38bfe.js.map": "/movie-land/static/js/main.a8c38bfe.js.map"
   },
   "entrypoints": [
     "static/css/main.3064e9e3.css",
-    "static/js/main.3d5e3c6e.js"
+    "static/js/main.a8c38bfe.js"
   ]
 }
