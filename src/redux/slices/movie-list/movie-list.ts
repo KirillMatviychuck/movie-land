@@ -1,9 +1,9 @@
-import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import {MovieType} from '../../api/api-types';
-import {moviesAPI, searchAPI} from '../../api/api';
+import { MovieType } from '../../api/api-types';
+import { moviesAPI, searchAPI } from '../../api/api';
 
-import {setAppProgressStatus} from './app';
+import { setAppProgressStatus } from './app';
 
 export enum CATEGORIES {
     POPULAR = 0,
@@ -14,40 +14,40 @@ export enum CATEGORIES {
 
 
 export const getMovies = createAsyncThunk('moviesList/getMovies',
-    async (arg: { category: number, page?: number }, {dispatch, rejectWithValue}) => {
-        dispatch(setAppProgressStatus({status: 'loading'}));
+    async (arg: { category: number, page?: number }, { dispatch, rejectWithValue }) => {
+        dispatch(setAppProgressStatus({ status: 'loading' }));
         try {
             if (arg.category === CATEGORIES.POPULAR) {
-                const res = await moviesAPI.getPopularMovies({page: arg.page});
-                return {...res.data, current_topic: CATEGORIES.POPULAR};
+                const res = await moviesAPI.getPopularMovies({ page: arg.page });
+                return { ...res.data, current_topic: CATEGORIES.POPULAR };
             }
             if (arg.category === CATEGORIES.TOP_RATED) {
-                const res = await moviesAPI.getTopRatedMovies({page: arg.page});
-                return {...res.data, current_topic: CATEGORIES.TOP_RATED};
+                const res = await moviesAPI.getTopRatedMovies({ page: arg.page });
+                return { ...res.data, current_topic: CATEGORIES.TOP_RATED };
             }
             if (arg.category === CATEGORIES.NOW_PLAYING) {
-                const res = await moviesAPI.getNowPlayingMovies({page: arg.page});
-                return {...res.data, current_topic: CATEGORIES.NOW_PLAYING};
+                const res = await moviesAPI.getNowPlayingMovies({ page: arg.page });
+                return { ...res.data, current_topic: CATEGORIES.NOW_PLAYING };
             } else {
-                const res = await moviesAPI.getUpcomingMovies({page: arg.page});
-                return {...res.data, current_topic: CATEGORIES.UPCOMING};
+                const res = await moviesAPI.getUpcomingMovies({ page: arg.page });
+                return { ...res.data, current_topic: CATEGORIES.UPCOMING };
             }
         } catch (e) {
-            return rejectWithValue({error: 'something went wrong'});
+            return rejectWithValue({ error: 'something went wrong' });
         } finally {
-            dispatch(setAppProgressStatus({status: 'succeeded'}));
+            dispatch(setAppProgressStatus({ status: 'succeeded' }));
         }
     });
 
 export const searchMovies = createAsyncThunk('search/searchMovie',
-    async (arg: { title: string, page?: number }, {rejectWithValue}) => {
-    try {
-        const res = await searchAPI.searchMovies(arg.title, arg.page);
-        return {...res.data, searchField: arg.title};
-    } catch (e) {
-        return rejectWithValue({error: 'something went wrong'});
-    }
-});
+    async (arg: { title: string, page?: number }, { rejectWithValue }) => {
+        try {
+            const res = await searchAPI.searchMovies(arg.title, arg.page);
+            return { ...res.data, searchField: arg.title };
+        } catch (e) {
+            return rejectWithValue({ error: 'something went wrong' });
+        }
+    });
 
 
 const moviesListSlice = createSlice({
@@ -78,7 +78,7 @@ const moviesListSlice = createSlice({
     }
 });
 
-export const {changeSearchField} = moviesListSlice.actions;
+export const { changeSearchField } = moviesListSlice.actions;
 export const moviesReducer = moviesListSlice.reducer;
 
 type InitialState = {
