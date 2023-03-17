@@ -1,9 +1,9 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 
-import {GetCreditsResponse} from '../../api/api-types';
-import {moviesAPI} from '../../api/api';
+import {GetCreditsResponse} from '../../../api/api-types';
+import {moviesAPI} from '../../../api/api';
 
-import {setAppProgressStatus} from './app';
+import {setAppProgressStatus} from '../app/app';
 
 const initialState: GetCreditsResponse = {
     id: 0,

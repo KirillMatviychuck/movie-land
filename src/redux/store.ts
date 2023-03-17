@@ -2,10 +2,10 @@ import {combineReducers} from 'redux';
 import {configureStore} from '@reduxjs/toolkit';
 import thunkMiddleware from 'redux-thunk';
 
-import {moviesReducer} from './slices/movie-list';
-import {movieDetailsReducer} from './slices/movie-details';
-import {appReducer} from './slices/app';
-import {movieCastReducer} from './slices/movie-cast';
+import {moviesReducer} from './slices/movie-list/movie-list';
+import {movieDetailsReducer} from './slices/movie-details/movie-details';
+import {appReducer} from './slices/app/app';
+import {movieCastReducer} from './slices/movie-cast/movie-cast';
 
 
 const rootReducer = combineReducers({

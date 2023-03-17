@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { MovieType } from '../../api/api-types';
-import { moviesAPI, searchAPI } from '../../api/api';
+import { MovieType } from '../../../api/api-types';
+import { moviesAPI, searchAPI } from '../../../api/api';
 
-import { setAppProgressStatus } from './app';
+import { setAppProgressStatus } from '../app/app';
 
 export enum CATEGORIES {
     POPULAR = 0,

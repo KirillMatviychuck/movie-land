@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import {useAppDispatch} from '../../../redux/hooks';
-import {CATEGORIES, getMovies} from '../../../redux/slices/movie-list';
+import { useAppDispatch } from '../../../redux/hooks';
+import { CATEGORIES, getMovies } from '../../../redux/slices/movie-list/movie-list';
 
 import styles from './Navigation.module.scss';
 
@@ -15,22 +15,22 @@ const Navigation = () => {
 
     const onCategoryChange = (index: number) => {
         setActiveIndex(index);
-        if (index === 0) dispatch(getMovies({category: CATEGORIES.POPULAR}));  
-        if (index === 1) dispatch(getMovies({category: CATEGORIES.TOP_RATED}));
-        if (index === 2) dispatch(getMovies({category: CATEGORIES.NOW_PLAYING}));
-        if (index === 3) dispatch(getMovies({category: CATEGORIES.UPCOMING}));
+        if (index === 0) dispatch(getMovies({ category: CATEGORIES.POPULAR }));
+        if (index === 1) dispatch(getMovies({ category: CATEGORIES.TOP_RATED }));
+        if (index === 2) dispatch(getMovies({ category: CATEGORIES.NOW_PLAYING }));
+        if (index === 3) dispatch(getMovies({ category: CATEGORIES.UPCOMING }));
 
         navigate('/');
     };
-    
+
     return (
         <nav className={styles.navigationBlock}>
             {
                 navbar.map((value, index) => {
                     return <span key={index}
-                                 className={activeIndex === index ? styles.active : styles.navigation}
-                                 onClick={() => onCategoryChange(index)}>
-                    {value}</span>;
+                        className={activeIndex === index ? styles.active : styles.navigation}
+                        onClick={() => onCategoryChange(index)}>
+                        {value}</span>;
                 })
             }
 

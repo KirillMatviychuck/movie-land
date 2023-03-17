@@ -4,7 +4,7 @@ const initialState: AppReducerType = {
     status: 'idle'
 };
 
-const appSlice = createSlice({
+export const appSlice = createSlice({
     name: 'app',
     initialState: initialState,
     reducers: {
