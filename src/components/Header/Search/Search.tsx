@@ -3,7 +3,7 @@ import { ChangeEvent, useEffect } from 'react';
 import search from '../../../assets/images/header/bottom-header/images/search.png';
 import useDebounce from '../../../hooks/useDebounce';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
-import {changeSearchField, searchMovies} from '../../../redux/slices/movie-list/movie-list';
+import { changeSearchField, searchMovies } from '../../../redux/slices/movie-list/movie-list';
 
 import styles from './Search.module.scss';
 
