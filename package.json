@@ -41,7 +41,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint -c .eslintrc --ext .ts,.tsx .",
-    "lint:fix": "yarn lint --fix"
+    "lint:fix": "lint --fix"
   },
   "browserslist": {
     "production": [
