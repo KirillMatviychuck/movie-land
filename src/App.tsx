@@ -10,7 +10,7 @@ function App() {
     const dispatch = useAppDispatch();
     useEffect(() => {
         dispatch(getMovies({ category: CATEGORIES.POPULAR }));
-    }, [dispatch]);
+    }, []);
 
     return (
         <div className='app'>
