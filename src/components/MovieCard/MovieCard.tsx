@@ -5,13 +5,10 @@ import { useAppDispatch } from '../../redux/hooks';
 import { getMovieDetails } from '../../redux/slices/movie-details/movie-details';
 import defaultPoster from '../../assets/images/main-page/no-poster-found.jpg';
 import { getMovieCast } from '../../redux/slices/movie-cast/movie-cast';
+import { getPosterURL } from '../../utils/utils';
 
 import styles from './MovieCard.module.scss';
 import CardBackside from './CardBackside/CardBackside';
-
-export const getPosterURL = (posterPath: string) => {
-    return `https://www.themoviedb.org/t/p/w220_and_h330_face${posterPath}`;
-};
 
 const MovieCard: React.FC<PropsType> = ({ poster, movieID, movie_title, release_date, rating }) => {
     const [isHovering, setIsHovering] = useState(false);

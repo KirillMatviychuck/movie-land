@@ -1,31 +1,39 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-import {CreditsActor} from '../../api/api-types';
+import { CreditsActor } from '../../api/api-types';
 import male from '../../assets/images/main-page/cast/male.jpg';
 import female from '../../assets/images/main-page/cast/female.jpg';
+import { getProfileURL } from '../../utils/utils';
+import { useAppDispatch } from '../../redux/hooks';
+import { getMovieActorCredits, getMovieActorDetails } from '../../redux/slices/movie-actor-details/actor-details';
 
 import classes from './ActorCard.module.scss';
 
-const ActorCard: React.FC<Props> = ({actor}) => {
+const ActorCard: React.FC<Props> = ({ actor }) => {
 
-    const getProfileURL = (profilePath: string) => {
-        return profilePath
-            ? `https://www.themoviedb.org/t/p/w220_and_h330_face${profilePath}`
-            : '';
+    const dispatch = useAppDispatch();
+    const onClickHandler = () => {
+        dispatch(getMovieActorDetails({ actorID: actor.id }));
+        dispatch(getMovieActorCredits({ actorID: actor.id }));
     };
+
     const defaultPicture = actor.gender === 1 ? female : male;
     return (
-        <div className={classes.actorCard}>
+        <Link to={`/actor/${actor.id}`}
+            className={classes.actorCard}
+            onClick={onClickHandler}
+        >
             <div className={classes.actorImg}>
                 <img src={getProfileURL(actor.profile_path)
                     ? getProfileURL(actor.profile_path)
-                    : defaultPicture} alt='actor'/>
+                    : defaultPicture} alt='actor' />
             </div>
             <div className={classes.actorBio}>
                 <span className={classes.actorName}>{actor.name}</span>
                 <span className={classes.actorCharacter}>{actor.character}</span>
             </div>
-        </div>
+        </Link>
     );
 };
 
