@@ -5,7 +5,7 @@ import { AnimatePresence } from 'framer-motion';
 import Home from '../../pages/Home/Home';
 import Movie from '../../pages/Movie/Movie';
 import NotFound from '../../pages/NotFound/NotFound';
-import { ActorPage } from '../../pages/Actor/ActorPage';
+import { ActorPage } from '../../pages/Actor/Actor';
 
 const AnimatedRoutes = () => {
     const location = useLocation();

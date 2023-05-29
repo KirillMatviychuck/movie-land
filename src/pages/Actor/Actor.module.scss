@@ -1,0 +1,13 @@
+.actorPage {
+    min-height: 83.9vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .actorPageContainer {
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+        margin: 2rem 0;
+    }
+}

@@ -1,0 +1,19 @@
+.leftCol {
+    margin-right: 1rem;
+    width: 300px;
+
+    .pesonalInfo,
+    .socials {
+        margin: 0.5rem;
+
+        .personalnfoTitles {
+            font-weight: 700;
+        }
+    }
+
+    img {
+        border-radius: 20px;
+        width: 300px;
+
+    }
+}

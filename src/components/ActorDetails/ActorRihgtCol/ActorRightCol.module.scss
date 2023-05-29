@@ -1,0 +1,73 @@
+.rightCol {
+    margin-left: 1rem;
+    width: 77%;
+
+    .name {
+        margin-bottom: 1.5rem;
+    }
+
+    .biography {
+        margin: 0.5rem 0 1.5rem 0;
+        text-align: justify;
+    }
+
+    .knonForList {
+        display: flex;
+        justify-content: space-around;
+        margin: 0.5rem 0;
+
+        img {
+            width: 200px;
+            border-radius: 10px;
+        }
+    }
+
+    .actingTitle {
+        margin: 1.5rem 0 1rem 0;
+    }
+
+    .acting {
+        border: 1px solid gray;
+        box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.75);
+        padding: 1rem 1.7rem;
+
+        .actorMoviesBlock {
+            margin: 0.5rem 0;
+
+            .actorMovie {
+                margin: 1rem 0;
+
+                .movieItem {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin: 0 2rem;
+
+                    .movieRating {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 15px;
+                        width: 15px;
+                        padding: 10px;
+                        border: 2px solid green;
+                        border-radius: 30px;
+                        font-size: 0.9em;
+                    }
+                }
+
+                .actorMovieLine {
+                    margin-top: 0.5rem;
+                }
+
+                .circle {
+                    border: 2px solid black;
+                    display: inline-block;
+                    height: 7px;
+                    width: 7px;
+                    border-radius: 20px;
+                }
+            }
+        }
+    }
+}
