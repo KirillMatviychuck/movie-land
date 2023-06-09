@@ -23,13 +23,13 @@ const ActorLeftCol: FC<Props> = ({ profile_path, gender, birthday, place_of_birt
                 : defaultPicture} alt='actor' />
             <p className={styles.socials}>
                 <span className={styles.socialsItem}>
-                    {actorExternalID.instagram_id && <ActorSocial children={<Instagram fill='black' />} socialLink={`https://www.instagram.com/${actorExternalID.instagram_id}/`} />}
+                    {actorExternalID.instagram_id && <ActorSocial children={<Instagram fill='black' height='30px' width='30px' />} socialLink={`https://www.instagram.com/${actorExternalID.instagram_id}/`} />}
                 </span>
                 <span className={styles.socialsItem}>
-                    {actorExternalID.facebook_id && <ActorSocial children={<Facebook fill='black' />} socialLink={`https://www.facebook.com/${actorExternalID.facebook_id}`} />}
+                    {actorExternalID.facebook_id && <ActorSocial children={<Facebook fill='black' height='30px' width='30px' />} socialLink={`https://www.facebook.com/${actorExternalID.facebook_id}`} />}
                 </span>
                 <span className={styles.socialsItem}>
-                    {actorExternalID.twitter_id && <ActorSocial children={<Twitter fill='black' />} socialLink={`https://twitter.com/${actorExternalID.twitter_id}`} />}
+                    {actorExternalID.twitter_id && <ActorSocial children={<Twitter fill='black' height='30px' width='30px' />} socialLink={`https://twitter.com/${actorExternalID.twitter_id}`} />}
                 </span>
             </p>
             <h3 className={styles.pesonalInfo}>Personal Info</h3>
