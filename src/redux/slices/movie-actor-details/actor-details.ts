@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import { setAppProgressStatus } from '../app/app';
-import { moviesAPI } from '../../../api/api';
+import { actorAPI, moviesAPI } from '../../../api/api';
 import { ActorCreditsItem, ActorExternalIDsItem } from '../../../api/api-types';
 
 const initialState = {
@@ -26,7 +26,7 @@ export const getMovieActorDetails = createAsyncThunk('movieActorDetails/getMovie
     async (arg: { actorID: number }, { dispatch, rejectWithValue }) => {
         dispatch(setAppProgressStatus({ status: 'loading' }));
         try {
-            const response = await moviesAPI.getActorDetails(arg.actorID);
+            const response = await actorAPI.getActorDetails(arg.actorID);
             dispatch(setAppProgressStatus({ status: 'succeeded' }));
             return { ...response.data };
         } catch (e) {
@@ -39,7 +39,7 @@ export const getMovieActorCredits = createAsyncThunk('movieActorDetails/getActor
     async (arg: { actorID: number }, { dispatch, rejectWithValue }) => {
         dispatch(setAppProgressStatus({ status: 'loading' }));
         try {
-            const response = await moviesAPI.getActorCredits(arg.actorID);
+            const response = await actorAPI.getActorCredits(arg.actorID);
             dispatch(setAppProgressStatus({ status: 'succeeded' }));
             return { ...response.data };
         } catch (error) {
@@ -50,7 +50,7 @@ export const getMovieActorExternalID = createAsyncThunk('movieActorDetails/getAc
     async (arg: { actorID: number }, { dispatch, rejectWithValue }) => {
         dispatch(setAppProgressStatus({ status: 'loading' }));
         try {
-            const response = await moviesAPI.getActorExternalID(arg.actorID);
+            const response = await actorAPI.getActorExternalID(arg.actorID);
             dispatch(setAppProgressStatus({ status: 'succeeded' }));
             return { ...response.data };
         } catch (error) {

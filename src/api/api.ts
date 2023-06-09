@@ -25,7 +25,11 @@ export const moviesAPI = {
     },
     getCredits(movieID: number) {
         return instance.get<GetCreditsResponse>(`movie/${movieID}/credits`, { params: { api_key: key } });
-    },
+    }
+
+};
+
+export const actorAPI = {
     getActorDetails(actorID: number) {
         return instance.get<GetActorDetailsResponse>(`person/${actorID}`, { params: { api_key: key } });
     },
@@ -35,8 +39,7 @@ export const moviesAPI = {
     getActorExternalID(actorID: number) {
         return instance.get<ActorExternalIDsItem>(`person/${actorID}/external_ids`, { params: { api_key: key } });
     }
-};
-
+}
 
 export const searchAPI = {
     searchMovies(title: string, page?: number) {
