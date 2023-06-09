@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import { setAppProgressStatus } from '../app/app';
 import { moviesAPI } from '../../../api/api';
-import { ActorCreditsItem } from '../../../api/api-types';
+import { ActorCreditsItem, ActorExternalIDsItem } from '../../../api/api-types';
 
 const initialState = {
     adult: false,
@@ -18,7 +18,8 @@ const initialState = {
     popularity: 0,
     profile_path: '',
     actorCredits: [] as ActorCreditsItem[],
-    topMovies: [] as ActorCreditsItem[]
+    topMovies: [] as ActorCreditsItem[],
+    actorExternalID: {} as ActorExternalIDsItem
 };
 
 export const getMovieActorDetails = createAsyncThunk('movieActorDetails/getMovieActorDetails',
@@ -36,8 +37,20 @@ export const getMovieActorDetails = createAsyncThunk('movieActorDetails/getMovie
 
 export const getMovieActorCredits = createAsyncThunk('movieActorDetails/getActorMovieCredits',
     async (arg: { actorID: number }, { dispatch, rejectWithValue }) => {
+        dispatch(setAppProgressStatus({ status: 'loading' }));
         try {
             const response = await moviesAPI.getActorCredits(arg.actorID);
+            dispatch(setAppProgressStatus({ status: 'succeeded' }));
+            return { ...response.data };
+        } catch (error) {
+            return rejectWithValue('something went wrong');
+        }
+    });
+export const getMovieActorExternalID = createAsyncThunk('movieActorDetails/getActorMovieExternalID',
+    async (arg: { actorID: number }, { dispatch, rejectWithValue }) => {
+        dispatch(setAppProgressStatus({ status: 'loading' }));
+        try {
+            const response = await moviesAPI.getActorExternalID(arg.actorID);
             dispatch(setAppProgressStatus({ status: 'succeeded' }));
             return { ...response.data };
         } catch (error) {
@@ -69,6 +82,9 @@ const movieActorDetailsSlice = createSlice({
                 .sort((a, b) => +b.release_date.slice(0, 4) - +a.release_date.slice(0, 4))
                 .filter(movie => +movie.release_date.slice(0, 4) < 2024 && movie.vote_average !== 0 && movie.character);
             state.topMovies = action.payload.cast.sort((a, b) => b.vote_count - a.vote_count).slice(0, 5);
+        });
+        builder.addCase(getMovieActorExternalID.fulfilled, (state, action) => {
+            state.actorExternalID = { ...action.payload };
         });
     },
 });

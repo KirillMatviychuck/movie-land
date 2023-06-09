@@ -7,7 +7,7 @@ import styles from './Actor.module.scss';
 
 
 export const ActorPage = () => {
-    const { biography, birthday, gender, place_of_birth, name, profile_path, actorCredits, topMovies } = useAppSelector(state => state.movieActorDetails);
+    const { biography, birthday, gender, place_of_birth, name, profile_path, actorCredits, topMovies, actorExternalID } = useAppSelector(state => state.movieActorDetails);
     const { status } = useAppSelector(state => state.app);
 
     if (status === 'loading') return <SingleMovieSkeleton />;
@@ -15,7 +15,7 @@ export const ActorPage = () => {
     return (
         <div className={styles.actorPage}>
             <div className={styles.actorPageContainer}>
-                <ActorLeftCol gender={gender} birthday={birthday} place_of_birth={place_of_birth} profile_path={profile_path} />
+                <ActorLeftCol gender={gender} birthday={birthday} place_of_birth={place_of_birth} profile_path={profile_path} actorExternalID={actorExternalID} />
                 <ActorRightCol actorCredits={actorCredits} biography={biography} name={name} topMovies={topMovies} />
             </div>
         </div>

@@ -6,7 +6,7 @@ import male from '../../assets/images/main-page/cast/male.jpg';
 import female from '../../assets/images/main-page/cast/female.jpg';
 import { getProfileURL } from '../../utils/utils';
 import { useAppDispatch } from '../../redux/hooks';
-import { getMovieActorCredits, getMovieActorDetails } from '../../redux/slices/movie-actor-details/actor-details';
+import { getMovieActorCredits, getMovieActorDetails, getMovieActorExternalID } from '../../redux/slices/movie-actor-details/actor-details';
 
 import classes from './ActorCard.module.scss';
 
@@ -16,6 +16,7 @@ const ActorCard: React.FC<Props> = ({ actor }) => {
     const onClickHandler = () => {
         dispatch(getMovieActorDetails({ actorID: actor.id }));
         dispatch(getMovieActorCredits({ actorID: actor.id }));
+        dispatch(getMovieActorExternalID({ actorID: actor.id }));
     };
 
     const defaultPicture = actor.gender === 1 ? female : male;

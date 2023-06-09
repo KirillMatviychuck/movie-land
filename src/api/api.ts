@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GetActorCreditsResponse, GetActorDetailsResponse, GetCreditsResponse, GetDetailsResponse, GetMoviesData, GetMoviesResponse } from './api-types';
+import { ActorExternalIDsItem, GetActorCreditsResponse, GetActorDetailsResponse, GetCreditsResponse, GetDetailsResponse, GetMoviesData, GetMoviesResponse } from './api-types';
 
 const instance = axios.create({
     baseURL: 'https://api.themoviedb.org/3/'
@@ -32,7 +32,11 @@ export const moviesAPI = {
     getActorCredits(actorID: number) {
         return instance.get<GetActorCreditsResponse>(`person/${actorID}/movie_credits`, { params: { api_key: key } });
     },
+    getActorExternalID(actorID: number) {
+        return instance.get<ActorExternalIDsItem>(`person/${actorID}/external_ids`, { params: { api_key: key } });
+    }
 };
+
 
 export const searchAPI = {
     searchMovies(title: string, page?: number) {
