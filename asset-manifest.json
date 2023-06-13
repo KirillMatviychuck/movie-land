@@ -1,18 +1,21 @@
 {
   "files": {
-    "main.css": "/movie-land/static/css/main.939fa607.css",
-    "main.js": "/movie-land/static/js/main.ac5db596.js",
+    "main.css": "/movie-land/static/css/main.369ca65e.css",
+    "main.js": "/movie-land/static/js/main.57da5887.js",
     "static/media/popcorn.png": "/movie-land/static/media/popcorn.232e37f920be00f2073f.png",
     "static/media/female.jpg": "/movie-land/static/media/female.2de26307288702ebfa63.jpg",
     "static/media/male.jpg": "/movie-land/static/media/male.509b4ea8530003a34282.jpg",
     "static/media/no-poster-found.jpg": "/movie-land/static/media/no-poster-found.3f9715169e330b10feb4.jpg",
     "static/media/github.png": "/movie-land/static/media/github.6fdc80f1a5d385046460.png",
+    "static/media/actor-instagram.svg": "/movie-land/static/media/actor-instagram.365dd76cf26db134552b33eace85d920.svg",
     "index.html": "/movie-land/index.html",
-    "main.939fa607.css.map": "/movie-land/static/css/main.939fa607.css.map",
-    "main.ac5db596.js.map": "/movie-land/static/js/main.ac5db596.js.map"
+    "static/media/actor-twitter.svg": "/movie-land/static/media/actor-twitter.fc1418e6f02856ae17738fae0c175a0b.svg",
+    "static/media/actor-facebook.svg": "/movie-land/static/media/actor-facebook.a9fd4fdb46c301c9dfbfbbc40ec90c33.svg",
+    "main.369ca65e.css.map": "/movie-land/static/css/main.369ca65e.css.map",
+    "main.57da5887.js.map": "/movie-land/static/js/main.57da5887.js.map"
   },
   "entrypoints": [
-    "static/css/main.939fa607.css",
-    "static/js/main.ac5db596.js"
+    "static/css/main.369ca65e.css",
+    "static/js/main.57da5887.js"
   ]
 }
