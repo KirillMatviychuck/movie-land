@@ -36,6 +36,9 @@
 
             .actorMovie {
                 margin: 1rem 0;
+                cursor: pointer;
+                text-decoration: none;
+                color: black;
 
                 .movieItem {
                     display: flex;
@@ -57,7 +60,9 @@
                 }
 
                 .actorMovieLine {
-                    margin-top: 0.5rem;
+                    height: 1px;
+                    background-color: black;
+                    margin: 0.5rem 0;
                 }
 
                 .circle {

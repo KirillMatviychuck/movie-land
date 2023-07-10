@@ -30,8 +30,9 @@ const MovieDetails = () => {
     if (status === 'loading') return <SingleMovieSkeleton />;
 
     return (
-        <div className={styles.backdrop}
-            style={{ backgroundImage: `url(${getBackdropURL(backdrop_path)})` }}>
+        <div className={styles.movieDetailsWrapper}>
+            <div className={styles.backdrop}
+                style={{ backgroundImage: `url(${getBackdropURL(backdrop_path)})` }}></div>
             <div className={styles.movieBlock}>
                 {poster_path
                     ? <img className={styles.poster} src={getPosterURL(poster_path)} alt='movie poster' />

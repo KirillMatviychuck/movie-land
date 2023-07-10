@@ -28,7 +28,6 @@ export const moviesAPI = {
     }
 
 };
-
 export const actorAPI = {
     getActorDetails(actorID: number) {
         return instance.get<GetActorDetailsResponse>(`person/${actorID}`, { params: { api_key: key } });
