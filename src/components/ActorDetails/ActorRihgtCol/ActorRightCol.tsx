@@ -53,7 +53,7 @@ const ActorRightCol: FC<Props> = ({ actorCredits, biography, name, topMovies }) 
                 </div>
             </div>
         </div>
-    )
+    );
 };
 
 type Props = {

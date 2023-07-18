@@ -38,7 +38,7 @@ export const actorAPI = {
     getActorExternalID(actorID: number) {
         return instance.get<ActorExternalIDsItem>(`person/${actorID}/external_ids`, { params: { api_key: key } });
     }
-}
+};
 
 export const searchAPI = {
     searchMovies(title: string, page?: number) {

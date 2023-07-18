@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import { setAppProgressStatus } from '../app/app';
-import { actorAPI, moviesAPI } from '../../../api/api';
+import { actorAPI } from '../../../api/api';
 import { ActorCreditsItem, ActorExternalIDsItem } from '../../../api/api-types';
 
 const initialState = {

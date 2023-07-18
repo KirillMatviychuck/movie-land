@@ -18,7 +18,7 @@ const Search = () => {
 
     useEffect(() => {
         if (debouncedValue) dispatch(searchMovies({ title: debouncedValue }));
-    }, [debouncedValue]);
+    }, [debouncedValue, dispatch]);
 
     return (
         <div className={styles.searchField}>

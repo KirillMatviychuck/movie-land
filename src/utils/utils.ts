@@ -33,3 +33,7 @@ export const getPosterURL = (posterPath: string) => {
     return `https://www.themoviedb.org/t/p/w220_and_h330_face${posterPath}`;
 };
 
+// Show correct revenue of the movie
+export const fixRevenueCount = () => {
+
+};
