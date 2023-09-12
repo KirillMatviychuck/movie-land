@@ -4,7 +4,9 @@ import CardBackside from './CardBackside';
 
 describe('elements in the document', () => {
     test('check elements', () => {
-        render(<CardBackside movie_title='Flash' rating={7.9219} release_date='2023-05-03' />);
+        render(<CardBackside movie_title='Flash'
+            rating={7.9219}
+            release_date='2023-05-03' />);
         const overviewElement = screen.getByText(/overview/i);
         expect(overviewElement).toBeInTheDocument();
         const titleElement = screen.getByText(/flash/i);

@@ -26,18 +26,18 @@ const ActorRightCol: FC<Props> = ({ actorCredits, biography, name, topMovies }) 
             <div>
                 <h4>Known For</h4>
                 <p className={styles.knonForList}>
-                    {topMovies.map((movie, index) => <NavLink to={`/movie/${movie.id}}`} onClick={() => onMovieClickHandler(movie.id)}>
-                        <img key={index} src={getPosterURL(movie.poster_path)} alt='actor' />
+                    {topMovies.map(movie => <NavLink key={movie.id} to={`/movie/${movie.id}}`} onClick={() => onMovieClickHandler(movie.id)}>
+                        <img src={getPosterURL(movie.poster_path)} alt='actor' />
                     </NavLink>)}
                 </p>
             </div>
             <h3 className={styles.actingTitle}>Acting</h3>
             <div className={styles.acting}>
                 <div className={styles.actorMoviesBlock}>
-                    {actorCredits.map((movie, index) => {
+                    {actorCredits.map(movie => {
                         return <NavLink to={`/movie/${movie.id}}`}
                             onClick={() => onMovieClickHandler(movie.id)}
-                            key={index}
+                            key={movie.id}
                             className={styles.actorMovie}>
                             <div className={styles.movieItem}>
                                 <p className={styles.movieDetails}>
