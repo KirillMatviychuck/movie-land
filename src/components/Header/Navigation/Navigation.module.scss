@@ -2,6 +2,7 @@
   height: 60px;
   display: flex;
   align-items: center;
+
   .navigation {
     display: flex;
     align-items: center;
@@ -13,6 +14,7 @@
     padding: 8px 15px;
     box-shadow: 0 0 1px 1px rgba(126, 126, 157, 0.71);
   }
+
   .active {
     display: flex;
     align-items: center;
@@ -24,7 +26,16 @@
     background-color: #01a1a1;
     box-shadow: 0 0 1px 1px rgba(126, 126, 157, 0.71);
   }
+
   span {
     cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .navigationBlock {
+    .navigation {
+      display: none;
+    }
   }
 }

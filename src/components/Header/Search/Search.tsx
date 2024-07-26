@@ -23,7 +23,7 @@ const Search = () => {
     return (
         <div className={styles.searchField}>
             <img src={search} alt='search' />
-            <input type='text' value={searchField} onChange={handleChange} placeholder='Enter the movie' />
+            <input type='text' value={searchField} onChange={handleChange} placeholder='Search' />
         </div>
     );
 };
