@@ -1,46 +1,66 @@
-# Getting Started with Create React App
+# 🎬 MovieLand
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A responsive movie discovery app built with React and TypeScript. Browse popular, top-rated, now playing and upcoming movies, search by title, and explore detailed information about movies, cast and actors — powered by [The Movie Database (TMDB) API](https://www.themoviedb.org/).
 
-## Available Scripts
+**[Live Demo →](https://KirillMatviychuck.github.io/movie-land)**
 
-In the project directory, you can run:
+## Features
 
-### `yarn start`
+- 🎥 Browse movies by category: Popular, Top Rated, Now Playing, Upcoming
+- 🔍 Search movies by title
+- 📄 Movie details page: overview, genres, runtime, budget, revenue, rating
+- 🎭 Cast list with links to individual actor pages
+- 👤 Actor details page with filmography
+- 📑 Pagination for movie lists
+- ⏳ Skeleton loaders for a smooth loading experience
+- 🎞️ Animated page transitions
+- 📱 Responsive layout
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Tech Stack
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **React 18** + **TypeScript**
+- **Redux Toolkit** for state management, `createAsyncThunk` for async data fetching
+- **React Router v6** for client-side routing
+- **Axios** for HTTP requests
+- **Material UI** for base UI components
+- **Framer Motion** for page transition animations
+- **SCSS Modules** for component-scoped styling
+- **react-loading-skeleton** for loading states
 
-### `yarn test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
 
-### `yarn build`
+- Node.js and Yarn installed
+- A free API key from [TMDB](https://www.themoviedb.org/settings/api)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+# Clone the repository
+git clone https://github.com/KirillMatviychuck/movie-land.git
+cd movie-land
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Install dependencies
+yarn install
 
-### `yarn eject`
+# Set up environment variables
+cp .env.example .env
+# Then open .env and paste your TMDB API key
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Start the development server
+yarn start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The app will be available at `http://localhost:3000`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Available Scripts
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+| Command | Description |
+|---|---|
+| `yarn start` | Runs the app in development mode |
+| `yarn build` | Builds the app for production |
+| `yarn test` | Runs the test suite |
+| `yarn deploy` | Deploys the production build to GitHub Pages |
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Project Structure
