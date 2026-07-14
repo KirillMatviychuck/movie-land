@@ -131,3 +131,21 @@
   }
 
 }
+
+
+@media screen and (max-width: 400px) {
+  .movieDetailsWrapper {
+    .movieBlock {
+      .poster {
+        display: none;
+      }
+
+      .description {
+        padding: 0;
+        .aboutMovie {
+          
+        }
+      }
+    }
+  }
+}

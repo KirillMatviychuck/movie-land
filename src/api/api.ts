@@ -5,7 +5,12 @@ import { ActorExternalIDsItem, GetActorCreditsResponse, GetActorDetailsResponse,
 const instance = axios.create({
     baseURL: 'https://api.themoviedb.org/3/'
 });
-const key = '016ccb02cdd8595021a6a64e763a449d';
+
+const key = process.env.REACT_APP_TMDB_API_KEY;
+
+if (!key) {
+    throw new Error('REACT_APP_TMDB_API_KEY is not defined. Check your .env file.');
+}
 
 export const moviesAPI = {
     getPopularMovies(data?: GetMoviesData) {
