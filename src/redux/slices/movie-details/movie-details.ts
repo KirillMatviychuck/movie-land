@@ -1,54 +1,38 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import {GetDetailsResponse} from '../../../api/api-types';
-import {moviesAPI} from '../../../api/api';
+import { GetDetailsResponse } from '../../../api/api-types';
+import { moviesAPI } from '../../../api/api';
 
-import {setAppProgressStatus} from '../app/app';
+import { setAppProgressStatus } from '../app/app';
 
 export const getMovieDetails = createAsyncThunk('movieDetails/getMovieDetails',
-    async (arg: { movieID: number }, {dispatch, rejectWithValue}) => {
-        dispatch(setAppProgressStatus({status: 'loading'}));
+    async (arg: { movieID: number }, { dispatch, rejectWithValue }) => {
+        dispatch(setAppProgressStatus({ status: 'loading' }));
         try {
             const res = await moviesAPI.getDetails(arg.movieID);
-            dispatch(setAppProgressStatus({status: 'succeeded'}));
-            return {...res.data};
+            dispatch(setAppProgressStatus({ status: 'succeeded' }));
+            return { ...res.data };
         } catch (e) {
-            return rejectWithValue({error: 'something went wrong'});
+            dispatch(setAppProgressStatus({ status: 'failed' }));
+            return rejectWithValue({ error: 'something went wrong' });
         }
     });
 
-const initialState = {};
+const initialState: GetDetailsResponse | null = null;
 
 
-const movieDetailsSlice = createSlice({
+const movieDetailsSlice = createSlice<GetDetailsResponse | null, {}>({
     name: 'movieDetails',
-    initialState: initialState as GetDetailsResponse,
+    initialState: initialState,
     reducers: {},
     extraReducers: builder => {
         builder.addCase(getMovieDetails.fulfilled, (state, action) => {
-            state.adult = action.payload.adult;
-            state.backdrop_path = action.payload.backdrop_path;
-            state.budget = action.payload.budget;
-            state.genres = action.payload.genres;
-            state.homepage = action.payload.homepage;
-            state.id = action.payload.id;
-            state.imdb_id = action.payload.imdb_id;
-            state.original_language = action.payload.original_language;
-            state.original_title = action.payload.original_title;
-            state.overview = action.payload.overview;
-            state.popularity = action.payload.popularity;
-            state.poster_path = action.payload.poster_path;
-            state.release_date = action.payload.release_date;
-            state.revenue = action.payload.revenue;
-            state.runtime = action.payload.runtime;
-            state.status = action.payload.status;
-            state.tagline = action.payload.tagline;
-            state.title = action.payload.title;
-            state.video = action.payload.video;
-            state.vote_average = action.payload.vote_average;
-            state.vote_count = action.payload.vote_count;
-
+            return { ...action.payload };
         });
+        builder.addCase(getMovieDetails.rejected, (state, action) => {
+            return null;
+        });
+
     }
 });
 

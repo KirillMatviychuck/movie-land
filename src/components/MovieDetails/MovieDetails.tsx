@@ -15,19 +15,22 @@ const getBackdropURL = (backdropPath: string) => {
 };
 
 const MovieDetails = () => {
+    const movieDetails = useAppSelector(state => state.movieDetails);
+    const { status } = useAppSelector(state => state.app);
+
+    if (status === 'loading' || !movieDetails) return <SingleMovieSkeleton />;
+
     const {
         vote_average, title, poster_path,
         backdrop_path, genres, release_date,
         revenue, runtime, tagline, overview
-    } = useAppSelector(state => state.movieDetails);
-    const { status } = useAppSelector(state => state.app);
+    } = movieDetails
 
     const movieRating = fixMovieRate(vote_average);
     const ratingColor = fixColor(movieRating);
     const correctDate = fixDate(release_date);
     const correctDuration = fixDuration(runtime);
 
-    if (status === 'loading') return <SingleMovieSkeleton />;
 
     return (
         <div className={styles.movieDetailsWrapper}>
