@@ -1,9 +1,9 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import {GetCreditsResponse} from '../../../api/api-types';
-import {moviesAPI} from '../../../api/api';
+import { GetCreditsResponse } from '../../../api/api-types';
+import { moviesAPI } from '../../../api/api';
 
-import {setAppProgressStatus} from '../app/app';
+import { setAppProgressStatus } from '../app/app';
 
 const initialState: GetCreditsResponse = {
     id: 0,
@@ -11,14 +11,15 @@ const initialState: GetCreditsResponse = {
 };
 
 export const getMovieCast = createAsyncThunk('movieCast/getMovieCast',
-    async (arg: { movieID: number }, {dispatch, rejectWithValue}) => {
-        dispatch(setAppProgressStatus({status: 'loading'}));
+    async (arg: { movieID: number }, { dispatch, rejectWithValue }) => {
+        dispatch(setAppProgressStatus({ status: 'loading' }));
         try {
             const res = await moviesAPI.getCredits(arg.movieID);
-            dispatch(setAppProgressStatus({status: 'succeeded'}));
-            return {...res.data};
+            dispatch(setAppProgressStatus({ status: 'succeeded' }));
+            return { ...res.data };
         } catch (e) {
-            return rejectWithValue({error: 'something went wrong'});
+            dispatch(setAppProgressStatus({ status: 'failed' }));
+            return rejectWithValue({ error: 'something went wrong' });
         }
     });
 
@@ -28,9 +29,11 @@ const movieCastSlice = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder.addCase(getMovieCast.fulfilled, (state, action) => {
-            state.id = action.payload.id;
-            state.cast = action.payload.cast;
-        });
+            return { ...action.payload };
+        })
+            .addCase(getMovieCast.rejected, (state) => {
+                return initialState;
+            });
     }
 });
 

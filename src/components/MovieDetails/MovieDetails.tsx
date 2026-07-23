@@ -24,7 +24,7 @@ const MovieDetails = () => {
         vote_average, title, poster_path,
         backdrop_path, genres, release_date,
         revenue, runtime, tagline, overview
-    } = movieDetails
+    } = movieDetails;
 
     const movieRating = fixMovieRate(vote_average);
     const ratingColor = fixColor(movieRating);

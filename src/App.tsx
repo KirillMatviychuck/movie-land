@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 import './App.scss';
-import Header from './components/Header/Header';
-import { CATEGORIES, getMovies } from './redux/slices/movie-list/movie-list';
-import { useAppDispatch } from './redux/hooks';
 import AnimatedRoutes from './components/AnimatedRoutes/AnimatedRoutes';
+import Header from './components/Header/Header';
+import { useAppDispatch } from './redux/hooks';
+import { CATEGORIES, getMovies } from './redux/slices/movie-list/movie-list';
 
 function App() {
     const dispatch = useAppDispatch();

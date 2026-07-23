@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useAppDispatch } from '../../redux/hooks';
@@ -12,17 +12,35 @@ import CardBackside from './CardBackside/CardBackside';
 
 const MovieCard: React.FC<PropsType> = ({ poster, movieID, movie_title, release_date, rating }) => {
     const [isHovering, setIsHovering] = useState(false);
-    const [delayHandler, setDelayHandler] = useState<any>(null);
+    const delayHandler = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+    useEffect(() => {
+        return () => {
+            if (delayHandler.current) {
+                clearTimeout(delayHandler.current);
+            }
+        };
+    }, []);
 
     const handleMouseEnter = () => {
-        setDelayHandler(setTimeout(() => setIsHovering(true), 150));
+        delayHandler.current = setTimeout(() => {
+            setIsHovering(true);
+        }, 150);
     };
+
 
     const handleMouseLeave = () => {
-        clearTimeout(delayHandler);
-        if (isHovering) setIsHovering(false);
+        if (delayHandler.current) {
+            clearTimeout(delayHandler.current);
+            delayHandler.current = null;
+        }
 
+        setIsHovering(false);
     };
+
+
+
+
 
     const dispatch = useAppDispatch();
     const onClickHandler = () => {
@@ -37,7 +55,7 @@ const MovieCard: React.FC<PropsType> = ({ poster, movieID, movie_title, release_
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-            <div className={styles.flipCardInner}>
+            <div className={`${styles.flipCardInner} ${isHovering ? styles.hover : ''}`}>
                 <div className={styles.flipCardFront}>{
                     poster
                         ? <img src={getPosterURL(poster)} alt='movie poster' />

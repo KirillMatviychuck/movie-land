@@ -19,23 +19,24 @@ export const getMovies = createAsyncThunk('moviesList/getMovies',
         try {
             if (arg.category === CATEGORIES.POPULAR) {
                 const res = await moviesAPI.getPopularMovies({ page: arg.page });
+                dispatch(setAppProgressStatus({ status: 'succeeded' }));
                 return { ...res.data, current_topic: CATEGORIES.POPULAR };
-            }
-            if (arg.category === CATEGORIES.TOP_RATED) {
+            } else if (arg.category === CATEGORIES.TOP_RATED) {
                 const res = await moviesAPI.getTopRatedMovies({ page: arg.page });
+                dispatch(setAppProgressStatus({ status: 'succeeded' }));
                 return { ...res.data, current_topic: CATEGORIES.TOP_RATED };
-            }
-            if (arg.category === CATEGORIES.NOW_PLAYING) {
+            } else if (arg.category === CATEGORIES.NOW_PLAYING) {
                 const res = await moviesAPI.getNowPlayingMovies({ page: arg.page });
+                dispatch(setAppProgressStatus({ status: 'succeeded' }));
                 return { ...res.data, current_topic: CATEGORIES.NOW_PLAYING };
             } else {
                 const res = await moviesAPI.getUpcomingMovies({ page: arg.page });
+                dispatch(setAppProgressStatus({ status: 'succeeded' }));
                 return { ...res.data, current_topic: CATEGORIES.UPCOMING };
             }
         } catch (e) {
+            dispatch(setAppProgressStatus({ status: 'failed' }));
             return rejectWithValue({ error: 'something went wrong' });
-        } finally {
-            dispatch(setAppProgressStatus({ status: 'succeeded' }));
         }
     });
 
@@ -49,30 +50,39 @@ export const searchMovies = createAsyncThunk('search/searchMovie',
         }
     });
 
+const initialState: InitialState = {
+    page: 0,
+    results: [],
+    total_pages: 0,
+    total_results: 0,
+    current_topic: CATEGORIES.POPULAR,
+    searchField: ''
+};
 
 const moviesListSlice = createSlice({
     name: 'moviesList',
-    initialState: {} as InitialState,
+    initialState: initialState,
     reducers: {
         changeSearchField(state, action: PayloadAction<{ value: string }>) {
-            state.searchField = action.payload.value;
+            if (state) {
+                state.searchField = action.payload.value;
+            }
         }
     },
     extraReducers: builder => {
         builder
             .addCase(getMovies.fulfilled, (state, action) => {
-                state.results = action.payload.results;
                 state.page = action.payload.page;
+                state.results = action.payload.results;
                 state.total_pages = action.payload.total_pages;
                 state.total_results = action.payload.total_results;
                 state.current_topic = action.payload.current_topic;
             })
             .addCase(searchMovies.fulfilled, (state, action) => {
-                state.results = action.payload.results;
-                state.page = action.payload.page;
-                state.total_pages = action.payload.total_pages;
-                state.total_results = action.payload.total_results;
-                state.searchField = action.payload.searchField;
+                return {
+                    ...action.payload,
+                    current_topic: state.current_topic
+                };
             });
 
     }
@@ -80,6 +90,8 @@ const moviesListSlice = createSlice({
 
 export const { changeSearchField } = moviesListSlice.actions;
 export const moviesReducer = moviesListSlice.reducer;
+
+
 
 type InitialState = {
     page: number
