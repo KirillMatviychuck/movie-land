@@ -41,11 +41,12 @@ export const getMovies = createAsyncThunk('moviesList/getMovies',
     });
 
 export const searchMovies = createAsyncThunk('search/searchMovie',
-    async (arg: { title: string, page?: number }, { rejectWithValue }) => {
+    async (arg: { title: string, page?: number }, { dispatch, rejectWithValue }) => {
         try {
             const res = await searchAPI.searchMovies(arg.title, arg.page);
             return { ...res.data, searchField: arg.title };
         } catch (e) {
+            dispatch(setAppProgressStatus({ status: 'failed' }));
             return rejectWithValue({ error: 'something went wrong' });
         }
     });
@@ -77,14 +78,19 @@ const moviesListSlice = createSlice({
                 state.total_pages = action.payload.total_pages;
                 state.total_results = action.payload.total_results;
                 state.current_topic = action.payload.current_topic;
-            })
-            .addCase(searchMovies.fulfilled, (state, action) => {
-                return {
-                    ...action.payload,
-                    current_topic: state.current_topic
-                };
             });
-
+        builder.addCase(getMovies.rejected, (state, action) => {
+            return initialState;
+        });
+        builder.addCase(searchMovies.fulfilled, (state, action) => {
+            return {
+                ...action.payload,
+                current_topic: state.current_topic
+            };
+        });
+        builder.addCase(searchMovies.rejected, (state, action) => {
+            return initialState;
+        });
     }
 });
 

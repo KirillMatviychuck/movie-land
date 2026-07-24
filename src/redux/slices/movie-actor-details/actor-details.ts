@@ -30,6 +30,7 @@ export const getMovieActorDetails = createAsyncThunk('movieActorDetails/getMovie
             dispatch(setAppProgressStatus({ status: 'succeeded' }));
             return { ...response.data };
         } catch (e) {
+            dispatch(setAppProgressStatus({ status: 'failed' }));
             return rejectWithValue('something went wrong');
         }
 
@@ -43,6 +44,7 @@ export const getMovieActorCredits = createAsyncThunk('movieActorDetails/getActor
             dispatch(setAppProgressStatus({ status: 'succeeded' }));
             return { ...response.data };
         } catch (error) {
+            dispatch(setAppProgressStatus({ status: 'failed' }));
             return rejectWithValue('something went wrong');
         }
     });
@@ -54,6 +56,7 @@ export const getMovieActorExternalID = createAsyncThunk('movieActorDetails/getAc
             dispatch(setAppProgressStatus({ status: 'succeeded' }));
             return { ...response.data };
         } catch (error) {
+            dispatch(setAppProgressStatus({ status: 'failed' }));
             return rejectWithValue('something went wrong');
         }
     });
@@ -64,18 +67,10 @@ const movieActorDetailsSlice = createSlice({
     reducers: {},
     extraReducers(builder) {
         builder.addCase(getMovieActorDetails.fulfilled, (state, action) => {
-            state.adult = action.payload.adult;
-            state.also_known_as = action.payload.also_known_as;
-            state.biography = action.payload.biography;
-            state.birthday = action.payload.birthday;
-            state.gender = action.payload.gender;
-            state.id = action.payload.id;
-            state.imdb_id = action.payload.imdb_id;
-            state.known_for_department = action.payload.known_for_department;
-            state.name = action.payload.name;
-            state.place_of_birth = action.payload.place_of_birth;
-            state.popularity = action.payload.popularity;
-            state.profile_path = action.payload.profile_path;
+            Object.assign(state, action.payload);
+        });
+        builder.addCase(getMovieActorDetails.rejected, (state, action) => {
+            return initialState;
         });
         builder.addCase(getMovieActorCredits.fulfilled, (state, action) => {
             state.actorCredits = action.payload.cast
@@ -83,8 +78,14 @@ const movieActorDetailsSlice = createSlice({
                 .filter(movie => +movie.release_date.slice(0, 4) < 2024 && movie.vote_average !== 0 && movie.character);
             state.topMovies = action.payload.cast.sort((a, b) => b.vote_count - a.vote_count).slice(0, 5);
         });
+        builder.addCase(getMovieActorCredits.rejected, (state, action) => {
+            return initialState;
+        });
         builder.addCase(getMovieActorExternalID.fulfilled, (state, action) => {
             state.actorExternalID = { ...action.payload };
+        });
+        builder.addCase(getMovieActorExternalID.rejected, (state, action) => {
+            return initialState;
         });
     },
 });

@@ -30,7 +30,7 @@ const movieDetailsSlice = createSlice<GetDetailsResponse | null, {}>({
             return { ...action.payload };
         });
         builder.addCase(getMovieDetails.rejected, (state, action) => {
-            return null;
+            return initialState;
         });
 
     }
