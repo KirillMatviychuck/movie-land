@@ -1,8 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import { GetDetailsResponse } from '../../../api/api-types';
 import { moviesAPI } from '../../../api/api';
-
+import { GetDetailsResponse } from '../../../api/api-types';
 import { setAppProgressStatus } from '../app/app';
 
 export const getMovieDetails = createAsyncThunk('movieDetails/getMovieDetails',
@@ -30,7 +29,7 @@ const movieDetailsSlice = createSlice<GetDetailsResponse | null, {}>({
             return { ...action.payload };
         });
         builder.addCase(getMovieDetails.rejected, (state, action) => {
-            return initialState;
+            return state;
         });
 
     }

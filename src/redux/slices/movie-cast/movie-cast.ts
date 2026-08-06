@@ -32,7 +32,7 @@ const movieCastSlice = createSlice({
             return { ...action.payload };
         })
             .addCase(getMovieCast.rejected, (state) => {
-                return initialState;
+                return state;
             });
     }
 });
