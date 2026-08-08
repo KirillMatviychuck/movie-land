@@ -22,7 +22,6 @@ A responsive movie discovery app built with React and TypeScript. Browse popular
 - **Redux Toolkit** for state management, `createAsyncThunk` for async data fetching
 - **React Router v6** for client-side routing
 - **Axios** for HTTP requests
-- **Material UI** for base UI components
 - **Framer Motion** for page transition animations
 - **SCSS Modules** for component-scoped styling
 - **react-loading-skeleton** for loading states
