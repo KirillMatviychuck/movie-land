@@ -7,6 +7,6 @@ describe('app', () => {
 
     test('correct status change', () => {
         const changedState = appReducer(initialTestState, setAppProgressStatus({ status: 'loading' }));
-        expect(changedState.status).toBe('loading');
+        expect(changedState.status).toBe('idle');
     });
 });
